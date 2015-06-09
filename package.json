@@ -9,16 +9,8 @@
   "contributors": [
     {
       "name": "James Gray",
-      "email": "jbg@pvblic.co"
-    },
-    {
-      "name": "Edward Knowles",
-      "email": "mail@eknowles.com"
-    },
-    {
-      "name": "Chris Gross",
-      "email": "schtoo@schtoo.com",
-      "url": "https://github.com/cgross"
+      "email": "jbg@pvblic.co",
+      "url": "https://github.com/pvblicltd"
     }
   ],
   "main": "app/index.js",

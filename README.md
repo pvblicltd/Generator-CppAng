@@ -4,7 +4,7 @@
 
 >Yeoman Generator for MOJ Angular projects within the CPP.
 
-This generator follows the [Angular Best Practice Guidelines for Project Structure](http://blog.angularjs.org/2014/02/an-angularjs-style-guide-and-best.html) and is managed by @eknowles.
+This generator follows the [Angular Best Practice Guidelines for Project Structure](http://blog.angularjs.org/2014/02/an-angularjs-style-guide-and-best.html) and is currently managed by J GRAY.
 
 Features
 
@@ -15,8 +15,9 @@ Features
     * Build uses [grunt-ng-annotate](https://github.com/olov/ng-annotate) so you don't have to use the Angular injection syntax for safe minification (i.e. you dont need `$inject` or `(['$scope','$http',...`.
     * `grunt serve` task allows you to run a simple development server with watch/livereload enabled.  Additionally, JSHint and the appropriate unit tests are run for the changed files.
 * Integrates Bower for package management
-* Includes Yeoman subgenerators for directives, services, partials, filters, and modules.
-* Integrates LESS and includes Bootstrap via the source LESS files allowing you to reuse Bootstrap vars/mixins/etc.
+* Includes Yeoman subgenerators for directives, services, partials, filters, modals and modules.
+* Integrates LESS and includes the source LESS from [CPP.UI](https://github.com/pvblicltd/cpp.ui) allowing you to use mixins etc.
+* Integrates [CPP.UI](https://github.com/pvblicltd/cpp.ui) common modules and components.
 * Easily Testable - Each sub-generator creates a skeleton unit test.  Unit tests can be run via `grunt test` and they run automatically during the grunt watch that is active during `grunt serve`.
 
 Directory Layout
@@ -67,19 +68,27 @@ In this example, the user has chosen to group the app into an `admin` folder, a 
 Getting Started
 -------------
 
-Prerequisites: Node, Grunt, Yeoman, and Bower.  Once Node is installed, do:
+This assumes you have installed Node. If you need to install node, vist [https://nodejs.org/](https://nodejs.org/) and follow the apropiate guide.
+
+Prerequisites: Node & Yeoman, and Bower.  Once Node is installed, do:
 
     npm install -g grunt-cli yo bower
 
-Next, install this generator:
+Next, choose a directory to install this generator (separate from your project folder):
 
-    npm install -g generator-bbcweb
+    cd yourGeneratorDirectory
+    git init
+    git remote add origin https://github.com/pvblicltd/Generator-CppAng.git
+    git pull origin master
 
-To create a project:
+Staying in the generator directory, link the generator:
 
-    mkdir MyNewAwesomeApp
-    cd MyNewAwesomeApp
-    yo bbcweb
+    npm link
+
+To create your new project, create the directory folder:
+
+    cd yourAppDirectory
+    yo cppAng
 
 Grunt Config
 -------------

@@ -2,6 +2,7 @@ angular.module('<%= _.camelize(appname) %>', [
   'config',
   'ui.bootstrap',
   'ui.utils',
+  'ui.cpp',
   'angularUtils.directives.dirPagination',
   'angulartics',
   'angulartics.google.analytics',
@@ -9,8 +10,8 @@ angular.module('<%= _.camelize(appname) %>', [
   'ngAnimate',
   'ngSanitize',
   'ngToast',
-  'ngFx',
-  'ui.cpp'
+  'ngFx'
+
 ]);
 angular.module('<%= _.camelize(appname) %>').config(function (ENV, $stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, paginationTemplateProvider, ngToastProvider, datepickerConfig) {
 
