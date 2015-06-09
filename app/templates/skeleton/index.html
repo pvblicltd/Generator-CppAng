@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" lang="en" data-ng-app="<%= _.camelize(appname) %>">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CPP - <%= _.camelize(_.classify(appname)) %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+  <link rel="icon" href="http://www.bbc.co.uk/favicon.ico" type="image/x-icon" />
+  <link href="app.less" type="text/css" rel="stylesheet/less">
+  <script data-concat="false" data-remove="false">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-XXXXXX', 'auto');</script>
+</head>
+<body>
+
+  <div id="scripts">
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <script data-remove="false" data-concat="false" src="bower_components/html5shiv/dist/html5shiv.min.js"></script>
+    <script data-remove="false" data-concat="false" src="bower_components/respond/src/respond.js"></script>
+    <script data-remove="false" data-concat="false" src="bower_components/es5-shim/es5-shim.min.js"></script>
+
+    <!-- Livereload script for development only (stripped during dist build) -->
+    <script src="http://localhost:35729/livereload.js" data-concat="false"></script>
+
+    <script src="bower_components/less.js/dist/less-1.6.2.js" data-concat="false"></script>
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/gsap/src/minified/TweenMax.min.js"></script>
+    <script src="bower_components/gsap/src/minified/TimelineMax.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/ngFx/dist/ngFx.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/angular-ui-utils/ui-utils.min.js"></script>
+    <script src="bower_components/angular-ui-utils/ui-utils-ieshiv.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/ngtoast/dist/ngToast.min.js"></script>
+    <script src="bower_components/angular-utils-pagination/dirPagination.js"></script>
+    <script src="bower_components/angulartics/dist/angulartics.min.js"></script>
+    <script src="bower_components/angulartics/dist/angulartics-ga.min.js"></script>
+    <script src="assets/dist/ui.cpp-tpls-0.0.1.js"></script>
+
+
+    <!-- Main App JS -->
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script data-concat="false" src="js/config.js"></script>
+    <script src="partial/home/home.js"></script>
+    <!-- Add New Component JS Above -->
+  </div><!--end scripts-->
+
+  <div  ui-scrollfix  id="header" class="navbar navbar-default navbar-fixed-top">
+
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mobile-nav"
+                  ng-click="isCollapsed = !isCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand visible-xs" href="#">cpp-ui</a>
+        </div>
+        <nav class="hidden-xs text-capitalize">
+          <ul class="nav navbar-nav">
+            <a href="/#/" role="button" class="navbar-brand text-uppercase">
+              <img height="20" alt="cpp-ui" src="assets/img/gov.uk_logo.svg" />
+            </a>
+          </ul>
+          <!-- Right Nav -->
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/#/">Global</a></li>
+            <li><a href="/#/">Nav</a></li>
+            <li><a href="/#/">Will</a></li>
+            <li><a href="/#/">Be</a></li>
+            <li><a href="/#/">Module</a></li>
+          </ul>
+        </nav>
+        <nav class="visible-xs" id="mobile-nav" collapse="!isCollapsed">
+          <ul class="nav navbar-nav">
+            <li><a href="#getting_started" ng-click="isCollapsed = !isCollapsed">Getting started</a></li>
+            <li><a href="#directives_small" ng-click="isCollapsed = !isCollapsed">Directives</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="navbar navbar-subnav" role="navigation">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mobile-nav"
+                    ng-click="isCollapsed = !isCollapsed">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand visible-xs" href="#">cpp-ui</a>
+          </div>
+          <nav class="hidden-xs text-capitalize">
+            <ul class="nav navbar-nav first-local-nav">
+              <li><a ui-sref="home" ui-sref-active="active">Home</a></li>
+              <!-- Add New Routes Above -->
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div><!--end header-->
+
+
+
+  <div id="body"><div <%= routerViewDirective %>></div></div>
+
+  <div id="footer">
+    <footer class="container">
+      <p class="text-muted">
+        <small>This is an app developed by the CPP Mobile Delivery Team.</small>
+      </p>
+      <br/>
+    </footer>
+    <div toast></div>
+  </div><!--end footer-->
+
+</body>
+</html>

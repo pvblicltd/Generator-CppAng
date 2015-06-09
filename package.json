@@ -1,0 +1,54 @@
+{
+  "name": "generator-cppAng",
+  "version": "1.1.0",
+  "description": "Yeoman Generator for CPP Angular projects.",
+  "keywords": [
+    "yeoman-generator",
+    "angular"
+  ],
+  "contributors": [
+    {
+      "name": "James Gray",
+      "email": "jbg@pvblic.co"
+    },
+    {
+      "name": "Edward Knowles",
+      "email": "mail@eknowles.com"
+    },
+    {
+      "name": "Chris Gross",
+      "email": "schtoo@schtoo.com",
+      "url": "https://github.com/cgross"
+    }
+  ],
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pvblicltd/generator-pvAng.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "underscore": "~1.5",
+    "underscore.string": "~2.3",
+    "yeoman-generator": "~0.16",
+    "chalk": "~0.4.0",
+    "ng-parse-module": "~0.1.0"
+  },
+  "devDependencies": {
+    "grunt-conventional-changelog": "^1.1.0",
+    "mocha": "~1.10.0"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
