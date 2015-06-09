@@ -1,8 +1,8 @@
-#generator-bbcweb
+#generator-cppAng
 
 ![Version](http://img.shields.io/badge/Version-0.0.1-brightgreen.svg?style=flat)
 
->Yeoman Generator for BBC Angular projects within the BBC Mobile Delivery team.
+>Yeoman Generator for MOJ Angular projects within the CPP.
 
 This generator follows the [Angular Best Practice Guidelines for Project Structure](http://blog.angularjs.org/2014/02/an-angularjs-style-guide-and-best.html) and is managed by @eknowles.
 
