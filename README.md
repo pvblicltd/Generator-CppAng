@@ -141,12 +141,12 @@ There are generators for `directive`, `partial`, `service`, `filter`, `module`, 
 
 Running a generator:
 
-    yo bbcweb:directive my-awesome-directive
-    yo bbcweb:partial my-partial
-    yo bbcweb:service my-service
-    yo bbcweb:filter my-filter
-    yo bbcweb:module my-module
-    yo bbcweb:modal my-modal
+    yo cppAng:directive my-awesome-directive
+    yo cppAng:partial my-partial
+    yo cppAng:service my-service
+    yo cppAng:filter my-filter
+    yo cppAng:module my-module
+    yo cppAng:modal my-modal
 
 The name paramater passed (i.e. 'my-awesome-directive') will be used as the file names.  The generators will derive appropriate class names from this parameter (ex. 'my-awesome-directive' will convert to a class name of 'MyAwesomeDirective').  Each sub-generator will ask for the folder in which to create the new skeleton files.  You may override the default folder for each sub-generator in the `.yo-rc.json` file.
 
@@ -157,7 +157,7 @@ Subgenerators are also customizable.  Please read [CUSTOMIZING.md](CUSTOMIZING.m
 Submodules
 -------------
 
-Submodules allow you to more explicitly separate parts of your application.  Use the `yo bbcweb:module my-module` command and specify a new subdirectory to place the module into.  Once you've created a submodule, running other subgenerators will now prompt you to select the module in which to place the new component.
+Submodules allow you to more explicitly separate parts of your application.  Use the `yo cppAng:module my-module` command and specify a new subdirectory to place the module into.  Once you've created a submodule, running other subgenerators will now prompt you to select the module in which to place the new component.
 
 Preconfigured Libraries
 -------------
