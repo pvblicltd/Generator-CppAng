@@ -432,6 +432,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('test', [
+    'ngconstant:development',
     'connect:test',
     'dom_munger:read',
     'karma:all_tests'

@@ -93,27 +93,7 @@ To create your new project, create the directory folder:
 Grunt Config
 -------------
 
-```grunt serve``` Edits your Apache virtual host file with the selected IP and restarts Apache.
-
-1. Set the permissions of the file to 774 and change the group and owner to your user and group
-2. Add "# BBC Host #" above your server alias line in your Apache virtual host config (see example below)
-
-```
-    # BBC Host #
-    ServerAlias 172.29.134.167
-```
-3. Add the full path of your vHost to Gruntfile.js
-```
-    vHostUpdate: {
-        vhostPath: 'PATH TO YOUR VHOST/httpd-vhosts.conf',
-        ipAddress: grunt.config('bbcNetworkIp')
-    }
-```
-
-```grunt FTP``` The grunt FTP command automatically pushes your project to the staging server. Uses [grunt-ftpscript](https://www.npmjs.com/package/grunt-ftpscript).
-1. Make sure you have been set up as a user on the Staging Server
-2. Update .ftppass with your BBC login username and password (ensure you do *not* add this to git or remove it from the .gitignore)
-3. Run ```grunt build``` before running ```grunt ftp```
+TO WRITE
 
 Grunt Tasks
 -------------
@@ -123,7 +103,6 @@ Now that the project is created, you have 3 simple Grunt commands available:
     grunt serve   #This will run a development server with watch & livereload enabled.
     grunt test    #Run local unit tests.
     grunt build   #Places a fully optimized (minified, concatenated, and more) in /dist
-    grunt ftp     #Pushed to staging server - make sure have have run grunt build before running
 
 When `grunt serve` is running, any changed javascript files will be linted using JSHint as well as have their appropriate unit tests executed.  Only the unit tests that correspond to the changed file will be run.  This allows for an efficient test driven workflow.
 
