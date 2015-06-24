@@ -4,28 +4,16 @@ angular.module('<%= _.camelize(appname) %>', [
   'ui.utils',
   'ui.cpp',
   'angularUtils.directives.dirPagination',
-  'angulartics',
-  'angulartics.google.analytics',
   'ui.router',
-  'ngAnimate',
-  'ngSanitize',
-  'ngToast',
-  'ngFx'
+  'ngAnimate'
 
 ]);
-angular.module('<%= _.camelize(appname) %>').config(function (ENV, $stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, paginationTemplateProvider, ngToastProvider, datepickerConfig) {
+angular.module('<%= _.camelize(appname) %>').config(function (ENV, $stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, paginationTemplateProvider, datepickerConfig) {
 
   datepickerConfig.startingDay = 6;
   datepickerConfig.showButtonBar = false;
   paginationTemplateProvider.setPath('bower_components/angular-utils-pagination/dirPagination.tpl.html');
 
-  ngToastProvider.configure({
-    verticalPosition: 'bottom',
-    horizontalPosition: 'center',
-    maxNumber: 5,
-    dismissOnTimeout: true,
-    timeout: 2000
-  });
 
   $locationProvider.html5Mode(false);
 

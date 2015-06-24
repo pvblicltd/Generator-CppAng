@@ -6,6 +6,7 @@ var os = require('os');
 var fs = require('fs');
 var sys = require('sys');
 var exec = require('child_process').exec;
+var path = require('path');
 
 //Using exclusion patterns slows down Grunt significantly
 //instead of creating a set of patterns like '**/*.js' and '!**/node_modules/**'
@@ -34,6 +35,9 @@ var createFolderGlobs = function (fileTypePatterns) {
 };
 
 module.exports = function (grunt) {
+
+  var seleniumPath;
+  seleniumPath = path.resolve('./node_modules/protractor/selenium');
 
   var devURL = 'localhost';
   var devApiURL = '';
@@ -80,21 +84,9 @@ module.exports = function (grunt) {
       ' */\n',
     },
 
-    changelog: {
-      options: {
-        version: pkg.version,
-        repository: pkg.repository.url,
-        subtitle: 'Version',
-        file: 'CHANGELOG.md',
-        commitLink: function (commitHash) {
-          return '[' + commitHash.substring(0, 8) + '](' + pkg.repository.url + '/commits/' + commitHash + ')';
-        },
-        issueLink: function (issueId) {
-          return '[' + issueId + '](' + pkg.repository.url + '/issue/' + issueId + ')';
-        },
-        versionText: function (version, subtitle) {
-          return '## [' + version + '][' + version + '] ' + subtitle;
-        }
+    env: {
+      test: {
+        PATH: seleniumPath + ":process.env.PATH"
       }
     },
 
@@ -105,12 +97,14 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
+          hostname: devURL,
           port: 9001,
           open: true
         }
       },
       test: {
         options: {
+          hostname: devURL,
           port: 9001
         }
       }
@@ -130,7 +124,7 @@ module.exports = function (grunt) {
       },
       development: {
         options: {
-          dest: 'js/config.js'
+          dest: 'config.js'
         },
         constants: {
           ENV: {
@@ -180,11 +174,15 @@ module.exports = function (grunt) {
 
     jshint: {
       main: {
+
         options: {
           jshintrc: '.jshintrc',
           reporter: require('jshint-stylish')
         },
-        src: createFolderGlobs('*.js')
+        src: createFolderGlobs('*.js'),
+        ignores: [
+          'test-out/*'
+        ]
       }
     },
 
@@ -319,21 +317,52 @@ module.exports = function (grunt) {
     karma: {
       options: {
         frameworks: ['jasmine'],
+        reporters: ['junit', 'progress', 'coverage'],
         files: [  //this files data is also updated in the watch handler, if updated change there too
-          '<%%= dom_munger.data.appjs %>',
+          '<%= dom_munger.data.appjs %>',
           'bower_components/angular-mocks/angular-mocks.js',
           createFolderGlobs('*-spec.js')
         ],
+        preprocessors: {
+          '{/,/!(node_modules|bower_components|dist|temp|assets|features|test-out)/**}/!(*-spec|app|config).js':['coverage']
+        },
         logLevel: 'ERROR',
-        reporters: ['mocha'],
         autoWatch: false, //watching is handled by grunt-contrib-watch
-        singleRun: true
+        singleRun: true,
+        plugins : [
+          'karma-chrome-launcher',
+          'karma-firefox-launcher',
+          'karma-jasmine',
+          'karma-junit-reporter',
+          'karma-coverage'
+        ],
+        junitReporter : {
+          outputFile: 'test-out/junit/junit.xml',
+        },
+        coverageReporter: {
+          type: 'cobertura',
+          dir: 'test-out/coverage',
+          file: 'cobertura.txt'
+        }
       },
       all_tests: {
         browsers: ['Chrome']
       },
       during_watch: {
         browsers: ['Chrome']
+      }
+    },
+
+    cucumberjs: {
+      files: 'e2e-tests/*.feature'
+    },
+
+    shell: {
+      selenium: {
+        command: './node_modules/protractor/bin/webdriver-manager start',
+        options: {
+          stdout: true
+        }
       }
     },
 
@@ -361,49 +390,11 @@ module.exports = function (grunt) {
     }
   });
 
-  // Set the ip configs
-  grunt.registerTask('setConfigs', function () {
-    grunt.config.set('connect.options.hostname', grunt.config('bbcNetworkIp'));
-    grunt.config.set('ngconstant.development.constants.ENV.baseURL', 'http://' + grunt.config('bbcNetworkIp'));
-    grunt.config.set('ngconstant.development.constants.ENV.apiEndpoint', 'http://' + grunt.config('bbcNetworkIp'));
-    grunt.config.set('vHostUpdate.ipAddress', grunt.config('bbcNetworkIp'));
-  });
-  // register the v host task
-  grunt.registerTask('vHostUpdate', function () {
-
-    var done = this.async();
-
-    fs.readFile(grunt.config('vHostUpdate.vhostPath'), 'utf8', function (err, data) {
-      if (err) {
-        done(false);
-        return console.log(err);
-      }
-      var result = data.replace(/# BBC Host #\n\s*ServerAlias(.*)/g, '# BBC Host #\n   ServerAlias ' + grunt.config('vHostUpdate.ipAddress') + '');
-      fs.writeFile(grunt.config('vHostUpdate.vhostPath'), result, 'utf8', function (err) {
-        if (err) {
-          done(false);
-          return console.log(err);
-        } else {
-          exec('sudo apachectl -k restart', function (error, stdout, stderr) {
-            if (error) {
-              done(false);
-              return console.log(error);
-            }
-            console.log('Apache restarted');
-            done();
-          });
-        }
-      });
-    });
-  });
 
   grunt.registerTask('serve', [
-    //'prompt:setip',
-    'setConfigs',
     'ngconstant:development',
     'dom_munger:read',
     'jshint',
-    //'vHostUpdate',
     'connect:livereload',
     'watch'
   ]);
@@ -441,16 +432,13 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('test', [
+    'connect:test',
     'dom_munger:read',
     'karma:all_tests'
   ]);
 
   grunt.registerTask('ftp', [
     'ftpscript'
-  ]);
-
-  grunt.registerTask('changes', [
-    'changelog'
   ]);
 
   grunt.event.on('watch', function (action, filepath) {

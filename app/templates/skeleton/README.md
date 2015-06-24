@@ -1,6 +1,6 @@
 <%= appname %>
 ===
-An AngularJS web app developed the **BBC Mobile Delivery** Team.
+An AngularJS web app developed the **CPP** Team.
 
 Tests
 ===

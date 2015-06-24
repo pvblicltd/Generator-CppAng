@@ -5,7 +5,7 @@ var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var cgUtils = require('../utils.js');
 
-var BBCWebGenerator = module.exports = function BBCWebGenerator(args, options, config) {
+var PvblicWebGenerator = module.exports = function PvblicWebGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
@@ -37,9 +37,9 @@ var BBCWebGenerator = module.exports = function BBCWebGenerator(args, options, c
 
 };
 
-util.inherits(BBCWebGenerator, yeoman.generators.Base);
+util.inherits(PvblicWebGenerator, yeoman.generators.Base);
 
-BBCWebGenerator.prototype.askFor = function askFor() {
+PvblicWebGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
   var prompts = [{
@@ -54,7 +54,7 @@ BBCWebGenerator.prototype.askFor = function askFor() {
   }.bind(this));
 };
 
-BBCWebGenerator.prototype.askForUiRouter = function askFor() {
+PvblicWebGenerator.prototype.askForUiRouter = function askFor() {
   var cb = this.async();
 
   var prompts = [{
@@ -83,7 +83,7 @@ BBCWebGenerator.prototype.askForUiRouter = function askFor() {
 };
 
 
-BBCWebGenerator.prototype.askForMaterial = function askFor() {
+PvblicWebGenerator.prototype.askForMaterial = function askFor() {
   var cb = this.async();
 
   var prompts = [{
@@ -100,6 +100,6 @@ BBCWebGenerator.prototype.askForMaterial = function askFor() {
   }.bind(this));
 };
 
-BBCWebGenerator.prototype.app = function app() {
+PvblicWebGenerator.prototype.app = function app() {
   this.directory('skeleton/', './');
 };

@@ -2,13 +2,8 @@
   "name": "<%= _.camelize(appname) %>",
   "version": "0.0.0",
   "private": true,
-  "description": "A web app by the BBC Mobile Delivery Team",
-  "author": "Edward Knowles <mail@eknowles.com>",
-  "homepage": "http://mobileapi.test/web/<%= _.camelize(appname) %>",
-  "repository": {
-    "type": "git",
-    "url": "https://bitbucket.org/BBCMobileDelivery/<%= _.slugify(appname) %>"
-  },
+  "description": "CPP AngualrJS Project",
+  "author": "James Gray <jbg@pvblic.co>",
   "scripts": {
     "test": "grunt test"
   },
@@ -29,17 +24,23 @@
     "grunt-conventional-changelog": "^1.1.0",
     "grunt-wiredep": "^2.0.0",
     "grunt-dom-munger": "~3.4",
+    "grunt-cucumber": "~0.2.1",
+    "grunt-env": "~0.4.0",
+    "grunt-shell": "~0.3.1",
     "grunt-karma": "~0.8.3",
+    "grunt-karma-sonar": "~0.2.7",
     "grunt-ng-annotate": "^0.10.0",
     "grunt-ng-constant": "^1.1.0",
     "grunt-ngdocs": "^0.2.6",
     "jshint-stylish": "^1.0.1",
-    "karma": "~0.12.6",
-    "karma-chrome-launcher": "~0.1.3",
-    "karma-firefox-launcher": "~0.1.3",
-    "karma-jasmine": "~0.1.5",
-    "karma-mocha-reporter": "~0.2.5",
-    "karma-phantomjs-launcher": "~0.1.4",
+    "jasmine-core": "^2.3.4",
+    "karma": "~0.12",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-jasmine": "^0.3.5",
+    "karma-junit-reporter": "^0.2.2",
+    "karma-coverage": "~0.4.2",
+    "protractor": "^2.1.0",
     "load-grunt-tasks": "^1.0.0",
     "yosay": "^1.0.0",
     "time-grunt": "^1.0.0",
@@ -47,9 +48,3 @@
     "grunt-ftpscript": "^0.1.7"
   }
 }
-
-
-  /* TEST COVERAGE
-
-      https://www.npmjs.com/package/grunt-istanbul-coverage
-      https://www.npmjs.com/package/grunt-protractor-coverage */
