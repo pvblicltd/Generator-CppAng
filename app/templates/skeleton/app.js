@@ -5,7 +5,8 @@ angular.module('<%= _.camelize(appname) %>', [
   'ui.cpp',
   'angularUtils.directives.dirPagination',
   'ui.router',
-  'ngAnimate'
+  'ngAnimate',
+  'ngLocalize'
 
 ]);
 angular.module('<%= _.camelize(appname) %>').config(function (ENV, $stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, paginationTemplateProvider, datepickerConfig) {
@@ -22,11 +23,13 @@ angular.module('<%= _.camelize(appname) %>').config(function (ENV, $stateProvide
 
   $urlRouterProvider.otherwise('/');
 
+  /*
   $httpProvider.defaults.withCredentials = ENV.name === 'production';
   $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded; charset=UTF-8";
   $httpProvider.defaults.transformRequest = function (data) {
     return data === undefined ? data : $.param(data);
   };
+  */
 
 });
 

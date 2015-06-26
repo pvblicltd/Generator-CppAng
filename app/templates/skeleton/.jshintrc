@@ -15,6 +15,7 @@
     "jQuery": true,
     "angular": true,
     "console": true,
+    "jasmine": true,
     "$": true,
     "_": true,
     "moment": true,

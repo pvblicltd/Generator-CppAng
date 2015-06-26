@@ -218,7 +218,7 @@ module.exports = function (grunt) {
     copy: {
       main: {
         files: [
-          {src: ['img/**'], dest: 'dist/'},
+          {src: ['assets/**'], dest: 'dist/'},
           {src: ['bower_components/html5shiv/**'], dest: 'dist/'},
           {src: ['bower_components/respond/**'], dest: 'dist/'},
           {src: ['bower_components/es5-shim/**'], dest: 'dist/'},

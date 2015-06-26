@@ -19,6 +19,7 @@ Features
 * Integrates LESS and includes the source LESS from [CPP.UI](https://github.com/pvblicltd/cpp.ui) allowing you to use mixins etc.
 * Integrates [CPP.UI](https://github.com/pvblicltd/cpp.ui) common modules and components.
 * Easily Testable - Each sub-generator creates a skeleton unit test.  Unit tests can be run via `grunt test` and they run automatically during the grunt watch that is active during `grunt serve`.
+* Includes localisation [ngLocalize](http://doshprompt.github.io/angular-localization/).
 
 Directory Layout
 -------------
@@ -131,8 +132,6 @@ The name paramater passed (i.e. 'my-awesome-directive') will be used as the file
 
 The modal subgenerator is a convenient shortcut to create partials that work as modals for Bootstrap v3.1 and Angular-UI-Bootstrap v0.10 (both come preconfigured with this generator).  If you choose not to use either of these libraries, simply don't use the modal subgenerator.
 
-Subgenerators are also customizable.  Please read [CUSTOMIZING.md](CUSTOMIZING.md) for details.
-
 Submodules
 -------------
 
@@ -166,6 +165,11 @@ Importantly, grunt-dom-munger uses CSS attribute selectors to manage the parsing
 * To prevent a script or stylesheet from being included in concatenation, put a `data-concat="false"` attribute on the link or script tag.  This is currently applied for the `livereload.js` and `less.js` script tags.
 
 * To prevent a script or link tag from being removed from the finalized `index.html`, use a `data-remove="false"` attribute.
+
+Test Output
+-------------
+
+You get a cc
 
 
 History
